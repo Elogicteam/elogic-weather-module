@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <weather_section>
+            <general>
+                <enable>1</enable>
+                <api_key>0b2b378346f619eb9fc39d9f7539d023</api_key>
+                <city_id>765876</city_id>
+                <units>metric</units>
+            </general>
+        </weather_section>
+    </default>
+</config>

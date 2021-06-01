@@ -1,0 +1,47 @@
+Back,Back
+"Delete row","Delete row"
+"Are you sure you want to do this?","Are you sure you want to do this?"
+"Save and Continue Edit","Save and Continue Edit"
+"Save vendor","Save vendor"
+"You deleted the row","You deleted the row"
+"Something went wrong while deleting the row.","Something went wrong while deleting the row."
+Weather,Weather
+"New row","New row"
+"Please correct the data sent.","Please correct the data sent."
+"A total of %1 record(s) have been deleted.","A total of %1 record(s) have been deleted."
+"Something went wrong while deleting rows.","Something went wrong while deleting rows."
+"You saved the row.","You saved the row."
+"Something went wrong while saving the row.","Something went wrong while saving the row."
+Standard,Standard
+Metric,Metric
+Imperial,Imperial
+"'Weather entity with id `%1` does not exist.' .","'Weather entity with id `%1` does not exist.' ."
+Edit,Edit
+Delete,Delete
+"Delete %1","Delete %1"
+"Are you sure you want to delete a %1 record?","Are you sure you want to delete a %1 record?"
+"Weather in Lublin","Weather in Lublin"
+Description,Description
+Temperature:,Temperature:
+"Min temperature:","Min temperature:"
+"Max temperature:","Max temperature:"
+Humidity:,Humidity:
+"Wind Speed:","Wind Speed:"
+Elogic,Elogic
+"General Configuration","General Configuration"
+"Module Enable","Module Enable"
+"Id of the city","Id of the city"
+"Api key","Api key"
+"Units of measurement","Units of measurement"
+"Weather Information","Weather Information"
+Title,Title
+Temperature,Temperature
+"Add New Row","Add New Row"
+"Are you sure you want to delete selected items?","Are you sure you want to delete selected items?"
+"Delete items","Delete items"
+ID,ID
+" Min Temperature"," Min Temperature"
+" Max Temperature"," Max Temperature"
+Humidity,Humidity
+"Wind Speed","Wind Speed"
+Created,Created

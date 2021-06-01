@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="weather" resource="default" engine="innodb" comment="Weather Table Declarative">
+        <column xsi:type="int" name="entity_id" padding="6" unsigned="true" nullable="false" identity="true" comment="Weather Entity ID"/>
+        <column xsi:type="double" name="temp" nullable="true" comment="Current temperature"/>
+        <column xsi:type="double" name="temp_min" nullable="true" comment="Min temperature"/>
+        <column xsi:type="double" name="temp_max" nullable="true" comment="Max temperature"/>
+        <column xsi:type="tinyint" name="humidity" nullable="true" comment="Humidity percent"/>
+        <column xsi:type="double" name="wind_speed" nullable="true" comment="Wind speed"/>
+        <column xsi:type="varchar" name="title" nullable="true" length="50" comment="Weather title"/>
+        <column xsi:type="varchar" name="description" nullable="true" length="255" comment="Weather description"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Datetime entity created at"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+</schema>

@@ -1,6 +1,13 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Elogic_Weather::css/custom.css" />
+    </head>
     <referenceContainer name="content">
-        <block class="Elogic\Weather\Block\WeatherDisplay" name="weather_view" template="Elogic_Weather::weather.phtml" />
+        <block class="Elogic\Weather\Block\WeatherDisplay"
+               name="weather_view"
+               template="Elogic_Weather::weather.phtml"
+               ifconfig="weather_section/general/enable"
+        />
     </referenceContainer>
 </page>

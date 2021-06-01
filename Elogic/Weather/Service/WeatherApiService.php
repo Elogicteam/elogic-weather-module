@@ -1,14 +1,21 @@
 <?php
+declare(strict_types=1);
 
 namespace Elogic\Weather\Service;
 
+use Elogic\Weather\Helper\Data;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientFactory;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\ResponseFactory;
 use Magento\Framework\Webapi\Rest\Request;
+use Magento\Framework\Serialize\SerializerInterface;
 
+/**
+ * Class WeatherApiService
+ * @package Elogic\Weather\Service
+ */
 class WeatherApiService
 {
     /**
@@ -24,25 +31,41 @@ class WeatherApiService
     /**
      * @var ResponseFactory
      */
-    private $responseFactory;
+    private ResponseFactory $responseFactory;
 
     /**
      * @var ClientFactory
      */
-    private $clientFactory;
+    private ClientFactory $clientFactory;
 
     /**
-     * GitApiService constructor
+     * @var Data
+     */
+    private Data $helperData;
+
+    /**
+     * @var SerializerInterface
+     */
+    private SerializerInterface $serializer;
+
+    /**
+     * WeatherApiService constructor
      *
      * @param ClientFactory $clientFactory
      * @param ResponseFactory $responseFactory
+     * @param Data $helperData
+     * @param SerializerInterface $serializer
      */
     public function __construct(
         ClientFactory $clientFactory,
-        ResponseFactory $responseFactory
+        ResponseFactory $responseFactory,
+        Data $helperData,
+        SerializerInterface $serializer
     ) {
         $this->clientFactory = $clientFactory;
         $this->responseFactory = $responseFactory;
+        $this->helperData = $helperData;
+        $this->serializer = $serializer;
     }
 
     /**
@@ -51,10 +74,20 @@ class WeatherApiService
      */
     public function execute()
     {
+        $param =
+            [
+                'id' => $this->helperData->getGeneralConfig('city_id'),
+                'appid' => $this->helperData->getGeneralConfig('api_key'),
+                'units' => $this->helperData->getGeneralConfig('units')
+            ];
+        $dataAttributes = array_map(function ($value, $key) {
+            return "{$key}={$value}";
+        }, array_values($param), array_keys($param));
+        $params = implode('&', $dataAttributes);
         $response = $this
             ->doRequest(
                 static::API_REQUEST_ENDPOINT,
-                ['query'=>'id=765876&appid=0b2b378346f619eb9fc39d9f7539d023']
+                ['query'=>$params]
             );
         $status = $response->getStatusCode();
         if ($status!=200) {
@@ -62,7 +95,7 @@ class WeatherApiService
         }
         $responseBody = $response->getBody();
         $responseContent = $responseBody->getContents();
-        return json_decode($responseContent);
+        return $this->serializer->unserialize($responseContent);
     }
 
     /**
@@ -96,7 +129,6 @@ class WeatherApiService
                 'reason' => $exception->getMessage()
             ]);
         }
-
         return $response;
     }
 }

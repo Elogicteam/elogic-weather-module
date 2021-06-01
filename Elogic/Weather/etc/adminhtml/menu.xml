@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Elogic_Weather::weather" title="Weather" module="Elogic_Weather" sortOrder="51" resource="Elogic_Weather::weather"/>
+        <add id="Elogic_Weather::weather_grid" title="Manage Weather" module="Elogic_Weather" sortOrder="10" action="weather" resource="Elogic_Weather::weather_grid" parent="Elogic_Weather::weather"/>
+        <add id="Elogic_Weather::weather_configuration" title="Configuration" module="Elogic_Weather" sortOrder="99" parent="Elogic_Weather::weather" action="adminhtml/system_config/edit/section/weather_section" resource="Elogic_Weather::weather_configuration"/>
+    </menu>
+</config>

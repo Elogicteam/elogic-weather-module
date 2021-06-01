@@ -1,9 +1,48 @@
 <?php
+
+use Elogic\Weather\Api\Data\WeatherInterface;
 use Elogic\Weather\Block\WeatherDisplay;
 
 /**
  * @var WeatherDisplay $block
  */
+/**
+ * @var WeatherInterface $row
+ */
+$row = $block->getWeather();
 
+?>
 
-var_dump($block->getWeather());
+<?php if ($row->getData()): ?>
+<div class="card">
+    <div class="card-header"><h3><?= __('Weather in Lublin')?></h3></div>
+    <div class="card-body">
+        <h4 class="card-title"><?= $row->getTitle() ?></h4>
+        <p class="card-text">
+        <h5> <?= __('Description')?>: <?= $row->getDescription() ?> </h5>
+        <table class="card-body__table" border="1" cellpadding="5">
+            <tr>
+                <td><?= __('Temperature:') ?></td>
+                <td><?= $row->getTemp() ?> ℃</td>
+            </tr>
+            <tr>
+                <td><?= __('Min temperature:') ?></td>
+                <td><?= $row->getTempMin() ?> ℃</td>
+            </tr>
+            <tr>
+                <td><?= __('Max temperature:') ?></td>
+                <td><?= $row->getTempMax() ?> ℃</td>
+            </tr>
+            <tr>
+                <td><?= __('Humidity:') ?></td>
+                <td><?= $row->getHumidity() ?> %</td>
+            </tr>
+            <tr>
+                <td><?= __('Wind Speed:') ?></td>
+                <td><?= $row->getWindSpeed() ?> m/s</td>
+            </tr>
+        </table>
+        </p>
+    </div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,18 @@
+{
+    "weather": {
+        "column": {
+            "entity_id": true,
+            "temp": true,
+            "temp_min": true,
+            "temp_max": true,
+            "humidity": true,
+            "wind_speed": true,
+            "title": true,
+            "description": true,
+            "created_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}
